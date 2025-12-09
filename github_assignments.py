@@ -1,7 +1,18 @@
+from html import parser
 import requests
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument("username", help="enter a valid github username")
+
+#collecting the args where theyre going to be passed
+args = parser.parse_args()
+
+username = args.username
+
 
 # 1. ask user for input
-username = input("Enter GitHub username: ")
+#username = input("Enter GitHub username: ")
 
 # 2. format the URL using the username
 url = f"https://api.github.com/users/{username}/events"
@@ -27,3 +38,4 @@ for event in events:
         break
 else:
     print("No CreateEvent found for this user.")
+
